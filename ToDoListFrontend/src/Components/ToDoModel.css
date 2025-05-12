@@ -1,0 +1,50 @@
+.todo-model-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.todo-model{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.todo-model-text{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #27548A; 
+}
+input[type="text"]{
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.close-button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.save--button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.todo-model-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}

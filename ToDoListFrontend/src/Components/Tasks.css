@@ -33,3 +33,26 @@
     margin-bottom: 10px;
     color: #27548A;  
 }
+.priority{
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left : 30px;
+    text-transform: uppercase;
+    /* background-color: red; */
+    color: white 
+}
+.priority.low{
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+.priority.medium {
+    background-color: #fff3cd;
+    color: #664d03;
+  }
+  
+  .priority.high {
+    background-color: #f8d7da;
+    color: #842029;
+  }

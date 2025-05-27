@@ -10,6 +10,8 @@ function ToDoModel({ handleClose, handleAdd }) {
     // setTodoInput("");
   };
 
+  const [priority, setPriority] = useState("low");
+
   return (
     <div className="todo-model-container">
       <div className="todo-model">
@@ -21,6 +23,11 @@ function ToDoModel({ handleClose, handleAdd }) {
           placeholder="Enter your task here..."
           onChange={handleChange}
         />
+        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
         <div className="todo-model-buttons">
           <button
             className="close-button"
@@ -33,7 +40,7 @@ function ToDoModel({ handleClose, handleAdd }) {
           <button
             className="save--button"
             onClick={() => {
-              handleAdd(toDoInput);
+              handleAdd(toDoInput, priority);
               setTodoInput("");
               handleClose();
             }}>

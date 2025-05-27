@@ -124,6 +124,7 @@
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/ToDoListAPI.csproj.CoreCompileInputs.cache
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/ToDoListAPI.MvcApplicationPartsAssemblyInfo.cs
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/ToDoListAPI.MvcApplicationPartsAssemblyInfo.cache
+/home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/ToDoListAPI.sourcelink.json
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/staticwebassets.build.json
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/staticwebassets.development.json
 /home/saumya/ToDoList/ToDoListAPI/obj/Debug/net8.0/staticwebassets/msbuild.ToDoListAPI.Microsoft.AspNetCore.StaticWebAssets.props

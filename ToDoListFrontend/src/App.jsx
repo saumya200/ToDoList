@@ -5,6 +5,15 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Tasks from "./Components/Tasks.jsx";
 import ToDoList from "./Components/ToDoList.jsx";
+import Header from "./Components/Header.jsx";
+// import ToDoPriorityColumn from "./Components/ToDoPriorityColumn.jsx";
+import Login from "./Components/Login/Login.jsx";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Navigate,
+// } from "react-router-dom";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,11 +22,40 @@ function App() {
 
   const [count, setCount] = useState(0);
 
-  const handleAdd = (newTodo) => {
+  const [deletedToDos, setDeletedToDos] = useState([]);
+
+  const handleAdd = (newTodo, title, priority) => {
     setTodos((prev) => {
       return [...prev, newTodo];
     });
+    createToDo(newTodo, priority);
   };
+
+  const userId = localStorage.getItem("userId");
+
+  // const [user, setUser] = useState(() => {
+  //   const storedUser = localStorage.getItem("user");
+  //   return storedUser ? JSON.parse(storedUser) : null;
+  // });
+  const [user, setUser] = useState(null);
+  const handleSetUser = (userData) => {
+    setUser(userData);
+  };
+
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  // ------------------------------------------------------------------------------------------------------------------
 
   const fetchAllTodos = async () => {
     const todos = await fetch("http://localhost:5283/api/ToDo/getall", {
@@ -32,11 +70,11 @@ function App() {
     setTodos(todosJson);
   };
 
-  useEffect(() => {
-    fetchAllTodos();
-  }, []);
+  // useEffect(() => {
+  //   fetchAllTodos();
+  // }, []);
 
-  const createToDo = async (todo) => {
+  const createToDo = async (todo, priority) => {
     const todos = await fetch("http://localhost:5283/api/ToDo/createToDo", {
       method: "POST",
       headers: {
@@ -45,12 +83,16 @@ function App() {
       },
       body: JSON.stringify({
         title: todo,
+        isComplete: false,
+        priority: priority,
+        DeletedAt: null,
+        userId: userId,
       }),
     });
     await fetchAllTodos();
   };
 
-  const updateToDo = async (id, updatedToDo) => {
+  const updateToDo = async (id, updatedTitle, priority) => {
     const todos = await fetch(`http://localhost:5283/api/ToDo/${id}`, {
       method: "PUT",
       headers: {
@@ -58,7 +100,11 @@ function App() {
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        title: updatedToDo,
+        id: id,
+        title: updatedTitle,
+        isComplete: true,
+        priority: priority,
+        isDeleted: true,
       }),
     });
     if (!todos.ok) {
@@ -84,11 +130,84 @@ function App() {
     }
   };
 
+  // const getDeletedToDo = async () => {
+  //   const todos = await fetch("http://localhost:5283/api/ToDo/deleted", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Access-Control-Allow-Origin": "*",
+  //     },
+  //   });
+  //   const deletedToDosJson = await todos.json();
+  //   setDeletedToDos(deletedToDosJson);
+  //   // getDeletedToDo();
+  // };
+
+  // useEffect(() => {
+  //   getDeletedToDo();
+  // }, []);
+
+  const fetchAllTodosByUserId = async (userId) => {
+    const todos = await fetch(`http://localhost:5283/api/ToDo/user/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const todosJson = await todos.json();
+    console.log(todosJson);
+    setTodos(todosJson);
+  };
+
+  useEffect(() => {
+    if (user?.userId) {
+      fetchAllTodosByUserId(user?.userId);
+    }
+  }, [user?.userId]);
+
+  //--------------------------------------------------------------------------------------------------------------------------------------
+  // console.log(user, "Hi");
   return (
     <div className="app">
-      <ToDoList handleAdd={createToDo} />
-      <Tasks arr={todos} updateToDo={updateToDo} />
+      <Header toggleTheme={toggleTheme} theme={theme} />
+      {!user?.userId ? (
+        <Login onLogin={handleSetUser} />
+      ) : (
+        <>
+          <ToDoList handleAdd={createToDo} user={user} />
+          <Tasks arr={todos} updateToDo={updateToDo} />
+        </>
+      )}
     </div>
+    //   <Router>
+    //     <Header toggleTheme={toggleTheme} theme={theme} />
+    //     <Routes>
+    //       <Route
+    //         path="/"
+    //         element={
+    //           userId ? <Navigate to="todos" /> : <Login onLogin={handleSetUser} />
+    //         }
+    //       />
+    //       <Route
+    //         path="todos"
+    //         element={
+    //           userId ? (
+    //             <>
+    //               <ToDoList handleAdd={createToDo} user={{ userId }} />
+    //               <Tasks
+    //                 arr={todos}
+    //                 updateToDo={updateToDo}
+    //                 deleteToDo={deleteToDo}
+    //               />
+    //             </>
+    //           ) : (
+    //             <Navigate to="/" />
+    //           )
+    //         }
+    //       />
+    //       <Route path="*" element={<Navigate to="/" />} />
+    //     </Routes>
+    //   </Router>
   );
 }
 

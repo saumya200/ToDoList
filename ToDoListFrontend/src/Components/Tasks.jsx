@@ -22,6 +22,7 @@ function Tasks({ arr, updateToDo }) {
       setStrikeIds(ids);
     }
   }, [arr?.length > 0]);
+  
 
   console.log(strikeIds, arr);
 
@@ -39,6 +40,9 @@ function Tasks({ arr, updateToDo }) {
                   handleClick(task?.id);
                 }}>
                 {task?.title}
+                <span className={`priority ${task.priority.toLowerCase()}`}>
+                  {task.priority}
+                </span>
               </h3>
             </div>
           );

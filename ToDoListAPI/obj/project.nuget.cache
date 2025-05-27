@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oGDXnNzQHL0=",
+  "dgSpecHash": "jFAEOhhCO44=",
   "success": true,
   "projectFilePath": "/home/saumya/ToDoList/ToDoListAPI/ToDoListAPI.csproj",
   "expectedPackageFiles": [
@@ -58,7 +58,10 @@
     "/home/saumya/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/saumya/.nuget/packages/system.text.encodings.web/9.0.4/system.text.encodings.web.9.0.4.nupkg.sha512",
     "/home/saumya/.nuget/packages/system.text.json/9.0.4/system.text.json.9.0.4.nupkg.sha512",
-    "/home/saumya/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
+    "/home/saumya/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
+    "/home/saumya/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/home/saumya/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
+    "/home/saumya/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.15/microsoft.netcore.app.host.linux-x64.8.0.15.nupkg.sha512"
   ],
   "logs": []
 }

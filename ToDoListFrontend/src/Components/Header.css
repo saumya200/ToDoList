@@ -1,0 +1,27 @@
+.header--text{
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    color: BLACK;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin-left: auto;
+    cursor: pointer;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #357ab8;
+  }
+
+.header--container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }

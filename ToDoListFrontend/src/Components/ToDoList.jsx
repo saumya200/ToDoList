@@ -23,7 +23,14 @@ function ToDoList({ handleAdd }) {
           +
         </button>
       </div>
-      {isOpen && <ToDoModel handleClose={handleClose} handleAdd={handleAdd} />}
+      {isOpen && (
+        <ToDoModel
+          handleClose={handleClose}
+          handleAdd={(title, priority) => {
+            handleAdd(title, priority);
+          }}
+        />
+      )}
     </div>
   );
 }
